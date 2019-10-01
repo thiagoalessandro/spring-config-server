@@ -8,3 +8,9 @@ spring:
       server:
         git:
           uri: https://github.com/thiagoalessandro/repo-config-app
+          search-paths: config/{application}/{profile}
+    stream:
+      kafka:
+        binder:
+          zkNodes: localhost:2181
+          brokers: localhost:9092

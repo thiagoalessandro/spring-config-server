@@ -1,8 +1,10 @@
 pipeline:
-  checkout:
-    image: docker:git
+  test:
+    # image used to create a container
+    image: golang:1.8-alpine
+    # commands executed in the container
     commands:
-      - git clone https://github.com/thiagoalessandro/spring-config-server.git
+      - "go test"
 
 #steps:
 #  - name: publish

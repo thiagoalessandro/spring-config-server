@@ -6,8 +6,8 @@ name: build-spring-config-server
 #  arch: amd64
 
 steps:
-  name: checkout
-  image: docker:git
+  - name: checkout
+    image: docker:git
     commands:
       - git clone https://github.com/thiagoalessandro/spring-config-server.git
 

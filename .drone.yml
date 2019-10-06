@@ -6,18 +6,24 @@ name: build-spring-config-server
 #  arch: amd64
 
 steps:
-  - name: publish
-    image: plugins/docker
-    settings:
-      auto_tag: true
-      username: thiagotafs
-      password: 1a2b3c4d5e
-      repo: thiagotafs/spring-config-server
-      tags: latest
-    when:
-      event:
-        - push
-        - tag
+  name: checkout
+  image: docker:git
+    commands:
+      - git clone https://github.com/thiagoalessandro/spring-config-server.git
+
+#steps:
+#  - name: publish
+#    image: plugins/docker
+#    settings:
+#      auto_tag: true
+#      username: thiagotafs
+#      password: 1a2b3c4d5e
+#      repo: thiagotafs/spring-config-server
+#      tags: latest
+#    when:
+#      event:
+#        - push
+#        - tag
 #pipeline:
 #  build:
 #    image: java:openjdk-8-alpine

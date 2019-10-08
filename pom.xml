@@ -20,6 +20,7 @@
     <properties>
         <java.version>1.8</java.version>
         <spring-cloud.version>Greenwich.SR3</spring-cloud.version>
+        <org.codehaus.mojo.version>2.7.1</org.codehaus.mojo.version>
     </properties>
 
     <dependencies>
@@ -64,6 +65,13 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-config-monitor</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>sonar-maven-plugin</artifactId>
+            <version>${org.codehaus.mojo.version}</version>
+            <type>maven-plugin</type>
         </dependency>
 
     </dependencies>

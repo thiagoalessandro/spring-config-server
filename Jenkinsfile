@@ -1,7 +1,7 @@
-def CONTAINER_NAME="jenkins-pipeline"
+def CONTAINER_NAME="spring-config-server"
 def CONTAINER_TAG="latest"
-def DOCKER_HUB_USER="XYZ"
-def HTTP_PORT="8090"
+def DOCKER_HUB_USER="thiagotafs"
+def HTTP_PORT="8999"
 
 node {
 

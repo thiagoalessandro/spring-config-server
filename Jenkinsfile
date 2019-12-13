@@ -7,7 +7,7 @@ node {
 
     stage('Initialize'){
         def dockerHome = "/var/lib/docker"
-        def mavenHome  = "/opt/maven/apache-maven-3.3.9"
+        def mavenHome  = "/usr/share/maven"
         env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"
     }
 

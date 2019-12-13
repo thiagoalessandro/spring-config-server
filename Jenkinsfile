@@ -1,5 +1,5 @@
 def CONTAINER_NAME="spring-config-server"
-def CONTAINER_TAG="latest"
+def CONTAINER_TAG="1.0.0"
 def DOCKER_HUB_USER="thiagotafs"
 def HTTP_PORT="8999"
 
@@ -47,13 +47,13 @@ def imagePrune(containerName){
 }
 
 def imageBuild(containerName, tag){
-    sh "docker build -t $containerName:$tag  -t $containerName --pull --no-cache ."
+    sh "docker build -t $dockerUser/$containerName:$tag --pull --no-cache ."
     echo "Image build complete"
 }
 
 def pushToImage(containerName, tag, dockerUser, dockerPassword){
     sh "docker login -u $dockerUser -p $dockerPassword"
-    sh "docker tag $containerName:$tag $dockerUser/$containerName:$tag"
+    sh "docker tag $dockerUser/$containerName:$tag $dockerUser/$containerName:$tag:latest"
     sh "docker push $dockerUser/$containerName:$tag"
     echo "Image push complete"
 }

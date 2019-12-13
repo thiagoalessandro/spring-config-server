@@ -7,7 +7,7 @@ def CONTAINER_TAG
 
 node {
 
-    stage('Initialize'){
+    stage('Initialize') {
         def dockerHome = tool 'myDocker'
         def mavenHome  = tool 'myMaven'
         env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"

@@ -1,5 +1,5 @@
 def CONTAINER_NAME="spring-config-server"
-def CONTAINER_TAG="1.0.0"
+def CONTAINER_TAG="1.0.1"
 def DOCKER_HUB_USER="thiagotafs"
 def HTTP_PORT="8999"
 

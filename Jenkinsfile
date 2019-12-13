@@ -1,9 +1,9 @@
 def CONTAINER_NAME="spring-config-server"
-def CONTAINER_TAG="1.0.2"
 def HTTP_PORT_HOST="8999"
 def HTTP_PORT_CONTAINER="8080"
 def DOCKER_HUB_USER
 def DOCKER_HUB_PASSWORD
+def CONTAINER_TAG
 
 node {
 
@@ -11,6 +11,7 @@ node {
         def dockerHome = tool 'myDocker'
         def mavenHome  = tool 'myMaven'
         env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"
+        CONTAINER_TAG = readMavenPom().getVersion()
         withCredentials([usernamePassword(credentialsId: 'dockerHubAccount', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
             DOCKER_HUB_USER = USERNAME
             DOCKER_HUB_PASSWORD = PASSWORD

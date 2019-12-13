@@ -1,7 +1,8 @@
 def CONTAINER_NAME="spring-config-server"
-def CONTAINER_TAG="1.0.1"
+def CONTAINER_TAG="1.0.2"
 def DOCKER_HUB_USER="thiagotafs"
-def HTTP_PORT="8999"
+def HTTP_PORT_HOST="8999"
+def HTTP_PORT_CONTAINER="8080"
 
 node {
 
@@ -34,7 +35,7 @@ node {
     }
 
     stage('Run App'){
-        runApp(CONTAINER_NAME, CONTAINER_TAG, DOCKER_HUB_USER, HTTP_PORT)
+        runApp(CONTAINER_NAME, CONTAINER_TAG, DOCKER_HUB_USER, HTTP_PORT_HOST, HTTP_PORT_CONTAINER)
     }
 
 }
@@ -47,21 +48,18 @@ def imagePrune(containerName){
 }
 
 def imageBuild(containerName, tag){
-    sh "docker build -t $containerName:$tag --pull --no-cache ."
+    sh "docker build -t $dockerUser/$containerName:$tag --pull --no-cache ."
     echo "Image build complete"
 }
 
 def pushToImage(containerName, tag, dockerUser, dockerPassword){
     sh "docker login -u $dockerUser -p $dockerPassword"
-    sh "docker tag $containerName:$tag $dockerUser/$containerName:$tag"
     sh "docker push $dockerUser/$containerName:$tag"
-    sh "docker tag $containerName:$tag $dockerUser/$containerName:latest"
-    sh "docker push $dockerUser/$containerName:latest"
     echo "Image push complete"
 }
 
-def runApp(containerName, tag, dockerHubUser, httpPort){
-    sh "docker pull $dockerHubUser/$containerName"
-    sh "docker run -d --rm -p $httpPort:$httpPort --name $containerName $dockerHubUser/$containerName:$tag"
-    echo "Application started on port: ${httpPort} (http)"
+def runApp(containerName, tag, dockerHubUser, httpPortHost, httpPortContainer){
+    sh "docker pull $dockerHubUser/$containerName:$tag"
+    sh "docker run -d --rm -p $httpPortHost:$httpPortContainer --name $containerName $dockerHubUser/$containerName:$tag"
+    echo "Application started on port: ${httpPortHost} (http)"
 }

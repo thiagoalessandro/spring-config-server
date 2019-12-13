@@ -13,8 +13,8 @@
     <groupId>br.com.intelector</groupId>
     <artifactId>project-spring-config-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
-    <name>spring-config</name>
+    <packaging>jar</packaging>
+    <name>spring-config-server</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -91,6 +91,9 @@
 
 
     <build>
+
+        <finalName>spring-config-server</finalName>
+
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

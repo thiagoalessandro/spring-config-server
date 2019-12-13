@@ -16,7 +16,7 @@ node {
     }
 
     stage('Build'){
-        sh "mvn clean install"
+        sh "mvn clean install -DskipTests"
     }
 
     stage("Image Prune"){

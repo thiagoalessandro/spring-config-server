@@ -6,8 +6,8 @@ def HTTP_PORT="8999"
 node {
 
     stage('Initialize'){
-        def dockerHome = "/var/lib/docker"
-        def mavenHome  = "/usr/share/maven"
+        def dockerHome = tool 'myDocker'
+        def mavenHome  = tool 'myMaven'
         env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"
     }
 
@@ -47,7 +47,7 @@ def imagePrune(containerName){
 }
 
 def imageBuild(containerName, tag){
-    sh "docker build -t $containerName:$tag  -v $dockerHome:/usr/bin/docker -t $containerName --pull --privileged --no-cache ."
+    sh "docker build -t $containerName:$tag  -t $containerName --pull --no-cache ."
     echo "Image build complete"
 }
 

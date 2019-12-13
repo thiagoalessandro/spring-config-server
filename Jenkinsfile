@@ -4,7 +4,7 @@ def HTTP_PORT_CONTAINER="8080"
 def DOCKER_HUB_USER
 def DOCKER_HUB_PASSWORD
 def CONTAINER_TAG
- 
+
 node {
 
     stage('Initialize'){

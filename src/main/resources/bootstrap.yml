@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8009
   servlet:
     context-path: /configserver
 spring:
@@ -14,3 +14,11 @@ spring:
         binder:
           zkNodes: localhost:2181
           brokers: localhost:9092
+management:
+  endpoints:
+    shutdown:
+      enabled: true
+    web:
+      exposure:
+        include: refresh, metrics
+
